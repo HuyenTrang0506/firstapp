@@ -1,6 +1,6 @@
 {
-    "name": "firstapp",
-    "short_name": "firstapp",
+    "name": "votingapp",
+    "short_name": "votingapp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

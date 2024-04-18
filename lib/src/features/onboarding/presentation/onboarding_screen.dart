@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:voting_app/src/common_widgets/primary_button.dart';
 import 'package:voting_app/src/common_widgets/responsive_center.dart';
@@ -24,16 +23,16 @@ class OnboardingScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Track your time.\nBecause time counts.',
+              'Discover our new voting app \nYour easy way to participate in democracy!',
               style: Theme.of(context).textTheme.headlineSmall,
               textAlign: TextAlign.center,
             ),
             gapH16,
-            SvgPicture.asset(
-              'assets/time-tracking.svg',
-              width: 200,
-              height: 200,
-              semanticsLabel: 'Time tracking logo',
+           Image.asset(
+            'assets/voting-box.png',
+            width: 200,
+            height: 200,
+            semanticLabel: 'Voting box',
             ),
             gapH16,
             PrimaryButton(
