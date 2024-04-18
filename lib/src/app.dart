@@ -5,7 +5,7 @@ import 'package:voting_app/src/routing/app_router.dart';
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
-  static const primaryColor = Colors.indigo;
+  static const primaryColor = Color.fromARGB(255, 52, 37, 149);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

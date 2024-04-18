@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:voting_app/src/common_widgets/list_items_builder.dart';
 import 'package:voting_app/src/constants/app_sizes.dart';
 import 'package:voting_app/src/constants/strings.dart';
-import 'package:voting_app/src/features/entries/domain/entries_list_tile_model.dart';
 import 'package:voting_app/src/features/entries/application/entries_service.dart';
-import 'package:voting_app/src/common_widgets/list_items_builder.dart';
+import 'package:voting_app/src/features/entries/domain/entries_list_tile_model.dart';
 
 class EntriesScreen extends ConsumerWidget {
   const EntriesScreen({super.key});
@@ -13,7 +13,7 @@ class EntriesScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(Strings.entries),
+        title: const Text(Strings.elections),
       ),
       body: Consumer(
         builder: (context, ref, child) {

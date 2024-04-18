@@ -1,6 +1,8 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+//import avatar widget
+import 'package:voting_app/src/common_widgets/avatar.dart';
 import 'package:voting_app/src/features/authentication/presentation/auth_providers.dart';
 
 class CustomProfileScreen extends ConsumerWidget {
@@ -14,6 +16,7 @@ class CustomProfileScreen extends ConsumerWidget {
         title: const Text('Profile'),
       ),
       providers: authProviders,
+        avatar: Avatar(radius: 100.0), // Use your Avatar widget here
     );
   }
 }

@@ -20,10 +20,10 @@ class Strings {
   static const String homePage = 'Home Page';
 
   // Jobs page
-  static const String jobs = 'Jobs';
+  static const String createElection = 'Create Election';
 
-  // Entries page
-  static const String entries = 'Entries';
+  // Vote page
+  static const String elections = 'My Elections';
 
   // Account page
   static const String account = 'Account';

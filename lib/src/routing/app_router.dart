@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:voting_app/src/routing/app_startup.dart';
 import 'package:voting_app/src/features/authentication/data/firebase_auth_repository.dart';
 import 'package:voting_app/src/features/authentication/presentation/custom_profile_screen.dart';
 import 'package:voting_app/src/features/authentication/presentation/custom_sign_in_screen.dart';
-import 'package:voting_app/src/features/entries/presentation/entries_screen.dart';
 import 'package:voting_app/src/features/entries/domain/entry.dart';
-import 'package:voting_app/src/features/jobs/domain/job.dart';
+import 'package:voting_app/src/features/entries/presentation/entries_screen.dart';
 import 'package:voting_app/src/features/entries/presentation/entry_screen/entry_screen.dart';
-import 'package:voting_app/src/features/jobs/presentation/job_entries_screen/job_entries_screen.dart';
-import 'package:go_router/go_router.dart';
+import 'package:voting_app/src/features/jobs/domain/job.dart';
 import 'package:voting_app/src/features/jobs/presentation/edit_job_screen/edit_job_screen.dart';
+import 'package:voting_app/src/features/jobs/presentation/job_entries_screen/job_entries_screen.dart';
 import 'package:voting_app/src/features/jobs/presentation/jobs_screen/jobs_screen.dart';
 import 'package:voting_app/src/features/onboarding/data/onboarding_repository.dart';
 import 'package:voting_app/src/features/onboarding/presentation/onboarding_screen.dart';
+import 'package:voting_app/src/routing/app_startup.dart';
 import 'package:voting_app/src/routing/go_router_refresh_stream.dart';
 import 'package:voting_app/src/routing/not_found_screen.dart';
 import 'package:voting_app/src/routing/scaffold_with_nested_navigation.dart';
@@ -25,6 +25,8 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _jobsNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'jobs');
 final _entriesNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'entries');
 final _accountNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'account');
+// final _mngVotesNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Manage Votes');
+// final _addVotesNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Create Ơ');
 
 enum AppRoute {
   onboarding,
