@@ -29,17 +29,23 @@ class ActionBox extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Icon(
-            image,
-            size: 72.0,
-            color: Colors.white,
-          ),
-          Text(
-            action,
-            style: TextStyle(
-              fontSize: 23.0,
+          Expanded(
+            flex: 3, 
+            child: Icon(
+              image,
+              size: 72.0,
               color: Colors.white,
-              fontWeight: FontWeight.bold,
+            ),
+          ), SizedBox(height: 40), 
+          Expanded(
+               flex: 2, 
+            child: Text(
+              action,
+              style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Align(
@@ -51,7 +57,7 @@ class ActionBox extends StatelessWidget {
               ),
               onPressed: null,
             ),
-          )
+          ),
         ],
       ),
     );

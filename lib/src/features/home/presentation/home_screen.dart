@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:voting_app/src/common_widgets/action_box.dart';
 import 'package:voting_app/src/common_widgets/styles.dart';
 import 'package:voting_app/src/features/info/presentation/info_screen.dart';
-class ElectChain extends StatefulWidget {
+import 'package:voting_app/src/features/jobs/domain/job.dart';
+import 'package:voting_app/src/features/jobs/presentation/jobs_screen/jobs_screen.dart';
+class ElectChainScreen extends StatefulWidget {
   @override
-  _ElectChainState createState() => _ElectChainState();
+  _ElectChainScreenState createState() => _ElectChainScreenState();
 }
 
-class _ElectChainState extends State<ElectChain> {
+class _ElectChainScreenState extends State<ElectChainScreen> {
   final GlobalKey _scaffoldKey = GlobalKey();
 
   @override
@@ -182,7 +184,9 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    // Get.to(JobsScreen());
+                  },
                   child: ActionBox(
                     action: "Create Election",
                     description: "Create a new vote",

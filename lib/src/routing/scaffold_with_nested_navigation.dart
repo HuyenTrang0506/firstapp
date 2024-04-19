@@ -26,19 +26,20 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    if (size.width < 450) {
+    if (true) {
       return ScaffoldWithNavigationBar(
         body: navigationShell,
         currentIndex: navigationShell.currentIndex,
         onDestinationSelected: _goBranch,
       );
-    } else {
-      return ScaffoldWithNavigationRail(
-        body: navigationShell,
-        currentIndex: navigationShell.currentIndex,
-        onDestinationSelected: _goBranch,
-      );
     }
+    // else {
+    //   return ScaffoldWithNavigationRail(
+    //     body: navigationShell,
+    //     currentIndex: navigationShell.currentIndex,
+    //     onDestinationSelected: _goBranch,
+    //   );
+    // }
   }
 }
 
@@ -61,8 +62,8 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
         selectedIndex: currentIndex,
         destinations: [
            NavigationDestination(
-            icon: const Icon(Icons.home_max_outlined),
-            selectedIcon: const Icon(Icons.work),
+            icon: const Icon(Icons.house_outlined),
+            selectedIcon: const Icon(Icons.house),
             label: 'Home'.hardcoded,
           ),
           // products
@@ -77,12 +78,12 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
             label: 'Entries'.hardcoded,
           ),
           NavigationDestination(
-            icon: const Icon(Icons.view_headline_outlined),
+            icon: const Icon(Icons.how_to_vote_outlined),
             selectedIcon: const Icon(Icons.how_to_vote),
             label: 'My Election'.hardcoded,
           ),
           NavigationDestination(
-            icon: const Icon(Icons.view_headline_outlined),
+            icon: const Icon(Icons.info_outlined),
             selectedIcon: const Icon(Icons.info),
             label: 'Info'.hardcoded,
           ),

@@ -15,12 +15,46 @@ class JobsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   title: const Text(Strings.createElection),
+      //   actions: <Widget>[
+      //     IconButton(
+      //       icon: const Icon(Icons.add, color: Colors.white),
+      //       onPressed: () => context.goNamed(AppRoute.addJob.name),
+      //     ),
+      //   ],
+      // ),
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[Colors.indigo, Colors.blue],
+            ),
+          ),
+        ),
+        elevation: 0.0,
         title: const Text(Strings.createElection),
-        actions: <Widget>[
+        actions: [
           IconButton(
-            icon: const Icon(Icons.add, color: Colors.white),
-            onPressed: () => context.goNamed(AppRoute.addJob.name),
+            color: Colors.white,
+            icon: Icon(Icons.how_to_vote_rounded),
+            onPressed: () {},
+          ),
+          Container(
+            decoration: BoxDecoration(shape: BoxShape.circle),
+            child: IconButton(
+              color: Colors.white,
+              icon: Icon(Icons.info_outline_rounded),
+              onPressed: () {
+                showAboutDialog(
+                  context: context,
+                  applicationVersion: '^1.0.0',
+                  applicationName: 'ElectChain',                 
+                );
+              },
+            ),
           ),
         ],
       ),
