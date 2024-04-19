@@ -7,6 +7,8 @@ import 'package:voting_app/src/features/authentication/presentation/custom_sign_
 import 'package:voting_app/src/features/entries/domain/entry.dart';
 import 'package:voting_app/src/features/entries/presentation/entries_screen.dart';
 import 'package:voting_app/src/features/entries/presentation/entry_screen/entry_screen.dart';
+import 'package:voting_app/src/features/home/presentation/home_screen.dart';
+import 'package:voting_app/src/features/info/presentation/info_screen.dart';
 import 'package:voting_app/src/features/jobs/domain/job.dart';
 import 'package:voting_app/src/features/jobs/presentation/edit_job_screen/edit_job_screen.dart';
 import 'package:voting_app/src/features/jobs/presentation/job_entries_screen/job_entries_screen.dart';
@@ -17,6 +19,7 @@ import 'package:voting_app/src/routing/app_startup.dart';
 import 'package:voting_app/src/routing/go_router_refresh_stream.dart';
 import 'package:voting_app/src/routing/not_found_screen.dart';
 import 'package:voting_app/src/routing/scaffold_with_nested_navigation.dart';
+
 
 part 'app_router.g.dart';
 
@@ -31,6 +34,7 @@ final _accountNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'account');
 enum AppRoute {
   onboarding,
   signIn,
+  home,
   jobs,
   job,
   addJob,
@@ -73,14 +77,18 @@ GoRouter goRouter(GoRouterRef ref) {
         if (path.startsWith('/startup') ||
             path.startsWith('/onboarding') ||
             path.startsWith('/signIn')) {
-          return '/jobs';
+          return '/home';
         }
       } else {
         if (path.startsWith('/startup') ||
             path.startsWith('/onboarding') ||
             path.startsWith('/jobs') ||
             path.startsWith('/entries') ||
-            path.startsWith('/account')) {
+            path.startsWith('/account')||
+            path.startsWith('/home')||
+            path.startsWith('/info')||
+            path.startsWith('/history'))
+             {
           return '/signIn';
         }
       }
@@ -123,10 +131,10 @@ GoRouter goRouter(GoRouterRef ref) {
             navigatorKey: _entriesNavigatorKey,
             routes: [
               GoRoute(
-                path: '/entries',
+                path: '/home',
                 name: AppRoute.entries.name,
-                pageBuilder: (context, state) => const NoTransitionPage(
-                  child: EntriesScreen(),
+                pageBuilder: (context, state) => NoTransitionPage(
+                    child: HomeScreen(),
                 ),
               ),
             ],
@@ -215,6 +223,30 @@ GoRouter goRouter(GoRouterRef ref) {
             routes: [
               GoRoute(
                 path: '/entries',
+                name: AppRoute.entries.name,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: EntriesScreen(),
+                ),
+              ),
+            ],
+          ),
+           StatefulShellBranch(
+            navigatorKey: _entriesNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/info',
+                name: AppRoute.entries.name,
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: InfoScreen(),
+                ),
+              ),
+            ],
+          ),
+           StatefulShellBranch(
+            navigatorKey: _entriesNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/history',
                 name: AppRoute.entries.name,
                 pageBuilder: (context, state) => const NoTransitionPage(
                   child: EntriesScreen(),
