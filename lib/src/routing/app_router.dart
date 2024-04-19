@@ -119,6 +119,18 @@ GoRouter goRouter(GoRouterRef ref) {
           child: ScaffoldWithNestedNavigation(navigationShell: navigationShell),
         ),
         branches: [
+            StatefulShellBranch(
+            navigatorKey: _entriesNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/entries',
+                name: AppRoute.entries.name,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: EntriesScreen(),
+                ),
+              ),
+            ],
+          ),
           StatefulShellBranch(
             navigatorKey: _jobsNavigatorKey,
             routes: [

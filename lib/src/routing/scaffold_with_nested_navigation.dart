@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:voting_app/src/localization/string_hardcoded.dart';
 
 // Stateful navigation based on:
@@ -61,6 +60,11 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
         destinations: [
+           NavigationDestination(
+            icon: const Icon(Icons.home_max_outlined),
+            selectedIcon: const Icon(Icons.work),
+            label: 'Home'.hardcoded,
+          ),
           // products
           NavigationDestination(
             icon: const Icon(Icons.work_outline),
@@ -72,6 +76,17 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
             selectedIcon: const Icon(Icons.view_headline),
             label: 'Entries'.hardcoded,
           ),
+          NavigationDestination(
+            icon: const Icon(Icons.view_headline_outlined),
+            selectedIcon: const Icon(Icons.how_to_vote),
+            label: 'My Election'.hardcoded,
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.view_headline_outlined),
+            selectedIcon: const Icon(Icons.info),
+            label: 'Info'.hardcoded,
+          ),
+          
           NavigationDestination(
             icon: const Icon(Icons.person_outline),
             selectedIcon: const Icon(Icons.person),
@@ -106,6 +121,11 @@ class ScaffoldWithNavigationRail extends StatelessWidget {
             labelType: NavigationRailLabelType.all,
             destinations: <NavigationRailDestination>[
               NavigationRailDestination(
+                icon: const Icon(Icons.home_outlined),
+                selectedIcon: const Icon(Icons.home),
+                label: Text('Home'.hardcoded),
+              ),
+              NavigationRailDestination(
                 icon: const Icon(Icons.work_outline),
                 selectedIcon: const Icon(Icons.work),
                 label: Text('Jobs'.hardcoded),
@@ -114,6 +134,16 @@ class ScaffoldWithNavigationRail extends StatelessWidget {
                 icon: const Icon(Icons.view_headline_outlined),
                 selectedIcon: const Icon(Icons.view_headline),
                 label: Text('Entries'.hardcoded),
+              ),
+               NavigationRailDestination(
+                icon: const Icon(Icons.how_to_vote_outlined),
+                selectedIcon: const Icon(Icons.how_to_vote),
+                label: Text('My Election'.hardcoded),
+              ),
+               NavigationRailDestination(
+                icon: const Icon(Icons.info_outlined),
+                selectedIcon: const Icon(Icons.info),
+                label: Text('Info'.hardcoded),
               ),
               NavigationRailDestination(
                 icon: const Icon(Icons.person_outline),
