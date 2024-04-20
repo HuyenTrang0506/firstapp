@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:voting_app/src/constants/app_sizes.dart';
-import 'package:voting_app/src/utils/format.dart';
 import 'package:voting_app/src/features/entries/domain/entry.dart';
 import 'package:voting_app/src/features/jobs/domain/job.dart';
+import 'package:voting_app/src/utils/format.dart';
 
 class EntryListItem extends StatelessWidget {
   const EntryListItem({
@@ -43,9 +43,13 @@ class EntryListItem extends StatelessWidget {
     final startTime = TimeOfDay.fromDateTime(entry.start).format(context);
     final endTime = TimeOfDay.fromDateTime(entry.end).format(context);
     final durationFormatted = Format.hours(entry.durationInHours);
-
+    
     final pay = job.ratePerHour * entry.durationInHours;
     final payFormatted = Format.currency(pay);
+     //add state, if current time < startTime-> state is 'upcoming', if current time > endTime -> state is 'completed', else state is 'ongoing'
+  final currentTime = DateTime.now();
+  final state = currentTime.isBefore(entry.start) ? 'upcoming' : currentTime.isAfter(entry.end) ? 'expired' : 'ongoing';
+  final stateColor = state == 'upcoming' ? Colors.blue : state == 'ongoing' ? Colors.green : Colors.red;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,8 +62,8 @@ class EntryListItem extends StatelessWidget {
           if (job.ratePerHour > 0.0) ...<Widget>[
             Expanded(child: Container()),
             Text(
-              payFormatted,
-              style: TextStyle(fontSize: 16.0, color: Colors.green[700]),
+              state,
+              style: TextStyle(fontSize: 16.0, color: stateColor),
             ),
           ],
         ]),

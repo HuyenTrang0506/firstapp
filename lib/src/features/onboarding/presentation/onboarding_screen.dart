@@ -31,7 +31,7 @@ class OnboardingScreen extends ConsumerWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: 'ELECT',
+                text: 'VOTE',
                 style: TextStyle(
                   color: Colors.pink[300],
                   fontSize: 18.0,
@@ -39,7 +39,7 @@ class OnboardingScreen extends ConsumerWidget {
                 ),
               ),
               TextSpan(
-                text: 'CHAIN',
+                text: 'SYSTEM',
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,

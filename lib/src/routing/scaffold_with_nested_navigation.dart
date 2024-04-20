@@ -61,33 +61,34 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
         destinations: [
-           NavigationDestination(
+          NavigationDestination(
             icon: const Icon(Icons.house_outlined),
             selectedIcon: const Icon(Icons.house),
             label: 'Home'.hardcoded,
           ),
           // products
           NavigationDestination(
-            icon: const Icon(Icons.work_outline),
-            selectedIcon: const Icon(Icons.work),
-            label: 'Jobs'.hardcoded,
+            icon: const Icon(Icons.add_outlined),
+            selectedIcon: const Icon(Icons.add),
+            label: 'Create'.hardcoded,
           ),
-          NavigationDestination(
-            icon: const Icon(Icons.view_headline_outlined),
-            selectedIcon: const Icon(Icons.view_headline),
-            label: 'Entries'.hardcoded,
-          ),
+
           NavigationDestination(
             icon: const Icon(Icons.how_to_vote_outlined),
             selectedIcon: const Icon(Icons.how_to_vote),
             label: 'My Election'.hardcoded,
           ),
           NavigationDestination(
+            icon: const Icon(Icons.history_outlined),
+            selectedIcon: const Icon(Icons.history),
+            label: 'History'.hardcoded,
+          ),
+          NavigationDestination(
             icon: const Icon(Icons.info_outlined),
             selectedIcon: const Icon(Icons.info),
             label: 'Info'.hardcoded,
           ),
-          
+
           NavigationDestination(
             icon: const Icon(Icons.person_outline),
             selectedIcon: const Icon(Icons.person),
@@ -136,12 +137,12 @@ class ScaffoldWithNavigationRail extends StatelessWidget {
                 selectedIcon: const Icon(Icons.view_headline),
                 label: Text('Entries'.hardcoded),
               ),
-               NavigationRailDestination(
+              NavigationRailDestination(
                 icon: const Icon(Icons.how_to_vote_outlined),
                 selectedIcon: const Icon(Icons.how_to_vote),
                 label: Text('My Election'.hardcoded),
               ),
-               NavigationRailDestination(
+              NavigationRailDestination(
                 icon: const Icon(Icons.info_outlined),
                 selectedIcon: const Icon(Icons.info),
                 label: Text('Info'.hardcoded),

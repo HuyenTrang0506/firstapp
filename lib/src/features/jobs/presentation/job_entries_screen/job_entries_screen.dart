@@ -6,7 +6,7 @@ import 'package:voting_app/src/features/jobs/data/jobs_repository.dart';
 import 'package:voting_app/src/features/jobs/domain/job.dart';
 import 'package:voting_app/src/features/jobs/presentation/job_entries_screen/job_entries_list.dart';
 import 'package:voting_app/src/routing/app_router.dart';
-import 'package:voting_app/src/constants/strings.dart';
+
 class JobEntriesScreen extends ConsumerWidget {
   const JobEntriesScreen({super.key, required this.jobId});
   final JobID jobId;
@@ -28,19 +28,6 @@ class JobEntriesPageContents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(job.name),
-      //   actions: <Widget>[
-      //     IconButton(
-      //       icon: const Icon(Icons.edit, color: Colors.white),
-      //       onPressed: () => context.goNamed(
-      //         AppRoute.editJob.name,
-      //         pathParameters: {'id': job.id},
-      //         extra: job,
-      //       ),
-      //     ),
-      //   ],
-      // ),
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -56,8 +43,8 @@ class JobEntriesPageContents extends StatelessWidget {
         actions: [
           IconButton(
             color: Colors.white,
-             icon: const Icon(Icons.edit, color: Colors.white),
-             onPressed: () => context.goNamed(
+            icon: const Icon(Icons.edit, color: Colors.white),
+            onPressed: () => context.goNamed(
               AppRoute.editJob.name,
               pathParameters: {'id': job.id},
               extra: job,
@@ -72,7 +59,7 @@ class JobEntriesPageContents extends StatelessWidget {
                 showAboutDialog(
                   context: context,
                   applicationVersion: '^1.0.0',
-                  applicationName: 'ElectChain',                 
+                  applicationName: 'ElectChain',
                 );
               },
             ),

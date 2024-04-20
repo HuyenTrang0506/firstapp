@@ -29,7 +29,7 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
   late DateTime _endDate;
   late TimeOfDay _endTime;
   late String _comment;
-
+  late List<String> _options;
   DateTime get start => DateTime(_startDate.year, _startDate.month,
       _startDate.day, _startTime.hour, _startTime.minute);
   DateTime get end => DateTime(_endDate.year, _endDate.month, _endDate.day,
@@ -47,6 +47,7 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
     _endTime = TimeOfDay.fromDateTime(end);
 
     _comment = widget.entry?.comment ?? '';
+    // _options = widget.entry?.options ?? ['', '', '', ''];
   }
 
   Future<void> _setEntryAndDismiss() async {
@@ -57,6 +58,7 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
               start: start,
               end: end,
               comment: _comment,
+              options: _options,
             );
     if (success && mounted) {
       context.pop();
@@ -70,18 +72,6 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
       (_, state) => state.showAlertDialogOnError(context),
     );
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(widget.entry != null ? 'Edit Entry' : 'New Entry'),
-      //   actions: <Widget>[
-      //     TextButton(
-      //       child: Text(
-      //         widget.entry != null ? 'Update' : 'Create',
-      //         style: const TextStyle(fontSize: 18.0, color: Colors.white),
-      //       ),
-      //       onPressed: () => _setEntryAndDismiss(),
-      //     ),
-      //   ],
-      // ),
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -93,7 +83,7 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
           ),
         ),
         elevation: 0.0,
-        title: Text(widget.entry != null ? 'Edit Entry' : 'New Entry'),
+        title: Text(widget.entry != null ? 'Edit Vote' : 'New Vote'),
         actions: [
           TextButton(
             child: Text(
@@ -126,12 +116,14 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              _buildStartDate(),
-              _buildEndDate(),
-              gapH8,
               _buildDuration(),
               gapH8,
               _buildComment(),
+              gapH8,
+              _buildStartDate(),
+              _buildEndDate(),
+              gapH8,
+              _buildOptions(),
             ],
           ),
         ),
@@ -162,17 +154,50 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
   Widget _buildDuration() {
     final durationInHours = end.difference(start).inMinutes.toDouble() / 60.0;
     final durationFormatted = Format.hours(durationInHours);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        Text(
-          'Duration: $durationFormatted',
-          style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-      ],
+    //state
+    final currentTime = DateTime.now();
+    final isExpired = currentTime.isAfter(end);
+    final isInProgress =
+        currentTime.isAfter(start) && currentTime.isBefore(end);
+
+    String state;
+    if (isExpired) {
+      state = 'Expired';
+    } else if (isInProgress) {
+      state = 'In Progress';
+    } else {
+      final remainingTime = start.difference(currentTime);
+      final remainingHours = remainingTime.inHours;
+      state = 'Will start in $remainingHours hours';
+    }
+
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Duration: $durationFormatted',
+            style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+          ),
+          Text(
+            'State: $state',
+            style: TextStyle(fontSize: 16.0, color: _getStateColor(state)),
+          ),
+        ],
+      ),
     );
+  }
+
+  Color _getStateColor(String state) {
+    switch (state) {
+      case 'Expired':
+        return Colors.red;
+      case 'In Progress':
+        return Colors.green;
+      default:
+        return Colors.blue;
+    }
   }
 
   Widget _buildComment() {
@@ -181,7 +206,7 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
       maxLength: 50,
       controller: TextEditingController(text: _comment),
       decoration: const InputDecoration(
-        labelText: 'Comment',
+        labelText: 'Content',
         labelStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
       ),
       keyboardAppearance: Brightness.light,
@@ -190,4 +215,32 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
       onChanged: (comment) => _comment = comment,
     );
   }
+}
+
+Widget _buildOptions() {
+  return Column(
+    children: <Widget>[
+      _buildOptionField('Option 1'),
+      SizedBox(height: 8.0),
+      _buildOptionField('Option 2'),
+      SizedBox(height: 8.0),
+      _buildOptionField('Option 3'),
+      SizedBox(height: 8.0),
+      _buildOptionField('Option 4'),
+    ],
+  );
+}
+
+Widget _buildOptionField(String option) {
+  return TextField(
+    decoration: InputDecoration(
+      labelText: option,
+      labelStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+    ),
+    keyboardAppearance: Brightness.light,
+    style: TextStyle(fontSize: 20.0, color: Colors.black),
+    onChanged: (value) {
+      // Handle the changed value
+    },
+  );
 }

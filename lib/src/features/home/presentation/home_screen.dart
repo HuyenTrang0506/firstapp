@@ -32,7 +32,7 @@ class _ElectChainScreenState extends State<ElectChainScreen> {
           text: TextSpan(
             children: [
               TextSpan(
-                text: 'ELECT',
+                text: 'VOTE',
                 style: TextStyle(
                   color: Colors.pink[300],
                   fontSize: 18.0,
@@ -40,7 +40,7 @@ class _ElectChainScreenState extends State<ElectChainScreen> {
                 ),
               ),
               TextSpan(
-                text: 'CHAIN',
+                text: 'SYSTEM',
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
@@ -103,7 +103,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "ENTER A VOTE CODE",
+              "SEARCH ELECTIONS",
               style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold,
@@ -135,13 +135,13 @@ class HomeScreen extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(18.0),
                       ),
-                      hintText: "Enter the election code",
+                      hintText: "SEARCH ELECTIONS",
                       hintStyle: TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.normal,
                       ),
                       prefixIcon: Icon(
-                        Icons.lock,
+                        Icons.search,
                       ),
                     ),
                   ),
@@ -163,7 +163,7 @@ class HomeScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                       label: Text(
-                        "Validate",
+                        "FIND",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,

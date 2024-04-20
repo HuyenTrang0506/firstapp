@@ -23,7 +23,7 @@ class EntriesScreen extends ConsumerWidget {
           ),
         ),
         elevation: 0.0,
-        title: const Text(Strings.elections),
+        title: const Text(Strings.history),
         actions: [
           IconButton(
             color: Colors.white,

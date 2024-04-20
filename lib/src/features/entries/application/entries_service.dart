@@ -5,11 +5,11 @@ import 'package:voting_app/src/features/authentication/domain/app_user.dart';
 import 'package:voting_app/src/features/entries/data/entries_repository.dart';
 import 'package:voting_app/src/features/entries/domain/daily_jobs_details.dart';
 import 'package:voting_app/src/features/entries/domain/entries_list_tile_model.dart';
+import 'package:voting_app/src/features/entries/domain/entry.dart';
 import 'package:voting_app/src/features/entries/domain/entry_job.dart';
 import 'package:voting_app/src/features/jobs/data/jobs_repository.dart';
-import 'package:voting_app/src/utils/format.dart';
-import 'package:voting_app/src/features/entries/domain/entry.dart';
 import 'package:voting_app/src/features/jobs/domain/job.dart';
+import 'package:voting_app/src/utils/format.dart';
 
 part 'entries_service.g.dart';
 
@@ -57,22 +57,22 @@ class EntriesService {
         .reduce((value, element) => value + element);
 
     return <EntriesListTileModel>[
-      EntriesListTileModel(
-        leadingText: 'All Entries',
-        middleText: Format.currency(totalPay),
-        trailingText: Format.hours(totalDuration),
+      const EntriesListTileModel(
+        leadingText: 'ALL ELECTIONS',
+        middleText: '',
+        trailingText: '',
       ),
       for (DailyJobsDetails dailyJobsDetails in allDailyJobsDetails) ...[
         EntriesListTileModel(
           isHeader: true,
           leadingText: Format.date(dailyJobsDetails.date),
-          middleText: Format.currency(dailyJobsDetails.pay),
+          middleText: dailyJobsDetails.state,
           trailingText: Format.hours(dailyJobsDetails.duration),
         ),
         for (JobDetails jobDuration in dailyJobsDetails.jobsDetails)
           EntriesListTileModel(
             leadingText: jobDuration.name,
-            middleText: Format.currency(jobDuration.pay),
+            middleText: dailyJobsDetails.state,
             trailingText: Format.hours(jobDuration.durationInHours),
           ),
       ]

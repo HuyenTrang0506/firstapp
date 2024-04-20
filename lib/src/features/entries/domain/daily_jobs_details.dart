@@ -6,10 +6,12 @@ class JobDetails {
     required this.name,
     required this.durationInHours,
     required this.pay,
+    required this.state,
   });
   final String name;
   double durationInHours;
   double pay;
+   String state;
 }
 
 /// Groups together all jobs/entries on a given day
@@ -17,6 +19,10 @@ class DailyJobsDetails {
   DailyJobsDetails({required this.date, required this.jobsDetails});
   final DateTime date;
   final List<JobDetails> jobsDetails;
+//get state from jobsDetails, state is a string
+  String get state => jobsDetails
+      .map((jobDuration) => jobDuration.state)
+      .reduce((value, element) => value + element);
 
   double get pay => jobsDetails
       .map((jobDuration) => jobDuration.pay)
@@ -60,15 +66,18 @@ class DailyJobsDetails {
     for (final entryJob in entries) {
       final entry = entryJob.entry;
       final pay = entry.durationInHours * entryJob.job.ratePerHour;
+      final state = entry.state;
       if (jobDuration[entry.jobId] == null) {
         jobDuration[entry.jobId] = JobDetails(
           name: entryJob.job.name,
           durationInHours: entry.durationInHours,
           pay: pay,
+          state: state,
         );
       } else {
         jobDuration[entry.jobId]!.pay += pay;
         jobDuration[entry.jobId]!.durationInHours += entry.durationInHours;
+        jobDuration[entry.jobId]!.state += state;
       }
     }
     return jobDuration.values.toList();

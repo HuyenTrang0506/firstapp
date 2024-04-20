@@ -22,14 +22,14 @@ class Strings {
   // Jobs page
   static const String createElection = 'Create Election';
 
-
   // Jobs page
   static const String info = 'Info & FaQ';
 
   // Vote page
-  static const String elections = 'My Elections';
+  static const String elections = 'Election Rooms';
 
   // Account page
   static const String account = 'Account';
   static const String accountPage = 'Account Page';
+  static const String history = 'History';
 }

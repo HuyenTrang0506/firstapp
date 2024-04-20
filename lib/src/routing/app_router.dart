@@ -222,18 +222,7 @@ GoRouter goRouter(GoRouterRef ref) {
               ),
             ],
           ),
-          StatefulShellBranch(
-            navigatorKey: _entriesNavigatorKey,
-            routes: [
-              GoRoute(
-                path: '/entries',
-                name: AppRoute.entries.name,
-                pageBuilder: (context, state) => const NoTransitionPage(
-                  child: EntriesScreen(),
-                ),
-              ),
-            ],
-          ),
+        
           StatefulShellBranch(
             navigatorKey: _electionsNavigatorKey,
             routes: [
@@ -242,6 +231,18 @@ GoRouter goRouter(GoRouterRef ref) {
                 name: AppRoute.elections.name,
                 pageBuilder: (context, state) => const NoTransitionPage(
                   child: JobsScreen(),
+                ),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: _entriesNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/entries',
+                name: AppRoute.entries.name,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: EntriesScreen(),
                 ),
               ),
             ],

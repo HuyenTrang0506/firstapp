@@ -10,12 +10,14 @@ class Entry extends Equatable {
     required this.start,
     required this.end,
     required this.comment,
+  
   });
   final EntryID id;
   final JobID jobId;
   final DateTime start;
   final DateTime end;
   final String comment;
+  
 
   @override
   List<Object> get props => [id, jobId, start, end, comment];
@@ -26,6 +28,22 @@ class Entry extends Equatable {
   double get durationInHours =>
       end.difference(start).inMinutes.toDouble() / 60.0;
 
+  String get state {
+    final currentTime = DateTime.now();
+    final isExpired = currentTime.isAfter(end);
+    final isInProgress =
+        currentTime.isAfter(start) && currentTime.isBefore(end);
+    if (isExpired) {
+      return 'Expired';
+    } else if (isInProgress) {
+      return 'In Progress';
+    } else {
+      final remainingTime = start.difference(currentTime);
+      final remainingHours = remainingTime.inHours;
+      return 'Will start in $remainingHours hours';
+    }
+  }
+
   factory Entry.fromMap(Map<dynamic, dynamic> value, EntryID id) {
     final startMilliseconds = value['start'] as int;
     final endMilliseconds = value['end'] as int;
@@ -35,6 +53,7 @@ class Entry extends Equatable {
       start: DateTime.fromMillisecondsSinceEpoch(startMilliseconds),
       end: DateTime.fromMillisecondsSinceEpoch(endMilliseconds),
       comment: value['comment'] as String? ?? '',
+    
     );
   }
 
@@ -44,6 +63,7 @@ class Entry extends Equatable {
       'start': start.millisecondsSinceEpoch,
       'end': end.millisecondsSinceEpoch,
       'comment': comment,
+
     };
   }
 }
