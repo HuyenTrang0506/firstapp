@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:voting_app/src/common_widgets/action_box.dart';
 import 'package:voting_app/src/common_widgets/styles.dart';
 import 'package:voting_app/src/features/info/presentation/info_screen.dart';
-import 'package:voting_app/src/features/jobs/domain/job.dart';
-import 'package:voting_app/src/features/jobs/presentation/jobs_screen/jobs_screen.dart';
+
 class ElectChainScreen extends StatefulWidget {
   @override
   _ElectChainScreenState createState() => _ElectChainScreenState();
@@ -94,10 +93,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var buttonStyle = ButtonStyle(
-                      fixedSize: MaterialStateProperty.all<Size>(
-                         Size.fromHeight(40.0),
-                      ),
-                    );
+      fixedSize: MaterialStateProperty.all<Size>(
+        Size.fromHeight(40.0),
+      ),
+    );
     return SingleChildScrollView(
       child: Container(
         margin: const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 10.0),
@@ -159,21 +158,19 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   child: TextButton.icon(
-                    
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.check_circle,
-                      color: Colors.white,
-                    ),
-                    label: Text(
-                      "Validate",
-                      style: TextStyle(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.check_circle,
                         color: Colors.white,
-                        fontSize: 20.0,
                       ),
-                    ),
-                    style: buttonStyle
-                  ),
+                      label: Text(
+                        "Validate",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                      style: buttonStyle),
                 ),
               ],
             ),
@@ -185,7 +182,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    // Get.to(JobsScreen());
+                    Get.toNamed('/jobs');
                   },
                   child: ActionBox(
                     action: "Create Election",
@@ -193,10 +190,15 @@ class HomeScreen extends StatelessWidget {
                     image: Icons.how_to_vote,
                   ),
                 ),
-                ActionBox(
-                  action: "Poll",
-                  description: "Create a new poll",
-                  image: Icons.poll,
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed('/jobs');
+                  },
+                  child: ActionBox(
+                    action: "Poll",
+                    description: "Create a new poll",
+                    image: Icons.poll,
+                  ),
                 ),
               ],
             ),
@@ -215,6 +217,7 @@ class HomeScreen extends StatelessWidget {
                   action: "FAQ",
                   description: "Create a new poll",
                   image: Icons.description,
+                  
                 ),
               ],
             ),

@@ -8,8 +8,8 @@ import 'package:voting_app/src/common_widgets/responsive_center.dart';
 import 'package:voting_app/src/constants/app_sizes.dart';
 import 'package:voting_app/src/constants/breakpoints.dart';
 import 'package:voting_app/src/features/entries/domain/entry.dart';
-import 'package:voting_app/src/features/jobs/domain/job.dart';
 import 'package:voting_app/src/features/entries/presentation/entry_screen/entry_screen_controller.dart';
+import 'package:voting_app/src/features/jobs/domain/job.dart';
 import 'package:voting_app/src/utils/async_value_ui.dart';
 import 'package:voting_app/src/utils/format.dart';
 
@@ -70,15 +70,51 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
       (_, state) => state.showAlertDialogOnError(context),
     );
     return Scaffold(
+      // appBar: AppBar(
+      //   title: Text(widget.entry != null ? 'Edit Entry' : 'New Entry'),
+      //   actions: <Widget>[
+      //     TextButton(
+      //       child: Text(
+      //         widget.entry != null ? 'Update' : 'Create',
+      //         style: const TextStyle(fontSize: 18.0, color: Colors.white),
+      //       ),
+      //       onPressed: () => _setEntryAndDismiss(),
+      //     ),
+      //   ],
+      // ),
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[Colors.indigo, Colors.blue],
+            ),
+          ),
+        ),
+        elevation: 0.0,
         title: Text(widget.entry != null ? 'Edit Entry' : 'New Entry'),
-        actions: <Widget>[
+        actions: [
           TextButton(
             child: Text(
               widget.entry != null ? 'Update' : 'Create',
               style: const TextStyle(fontSize: 18.0, color: Colors.white),
             ),
             onPressed: () => _setEntryAndDismiss(),
+          ),
+          Container(
+            decoration: BoxDecoration(shape: BoxShape.circle),
+            child: IconButton(
+              color: Colors.white,
+              icon: Icon(Icons.info_outline_rounded),
+              onPressed: () {
+                showAboutDialog(
+                  context: context,
+                  applicationVersion: '^1.0.0',
+                  applicationName: 'ElectChain',
+                );
+              },
+            ),
           ),
         ],
       ),

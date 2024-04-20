@@ -88,9 +88,9 @@ class _EditJobPageState extends ConsumerState<EditJobScreen> {
           ),
         ),
         elevation: 0.0,
- title: Text(widget.job == null ? 'New Job' : 'Edit Job'),       
-  actions: [
-          TextButton(            
+        title: Text(widget.job == null ? 'New Election' : 'Edit Election'),
+        actions: [
+          TextButton(
             onPressed: state.isLoading ? null : _submit,
             child: const Text(
               'Save',
@@ -106,7 +106,7 @@ class _EditJobPageState extends ConsumerState<EditJobScreen> {
                 showAboutDialog(
                   context: context,
                   applicationVersion: '^1.0.0',
-                  applicationName: 'ElectChain',                 
+                  applicationName: 'ElectChain',
                 );
               },
             ),
@@ -145,7 +145,7 @@ class _EditJobPageState extends ConsumerState<EditJobScreen> {
   List<Widget> _buildFormChildren() {
     return [
       TextFormField(
-        decoration: const InputDecoration(labelText: 'Job name'),
+        decoration: const InputDecoration(labelText: 'Election name'),
         keyboardAppearance: Brightness.light,
         initialValue: _name,
         validator: (value) =>
