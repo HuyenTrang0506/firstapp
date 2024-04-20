@@ -4,6 +4,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:voting_app/src/features/authentication/data/firebase_auth_repository.dart';
 import 'package:voting_app/src/features/authentication/presentation/custom_profile_screen.dart';
 import 'package:voting_app/src/features/authentication/presentation/custom_sign_in_screen.dart';
+import 'package:voting_app/src/features/election/presentation/job_entries_screen/job_entries_screen.dart';
+import 'package:voting_app/src/features/election/presentation/jobs_screen/jobs_screen.dart';
 import 'package:voting_app/src/features/entries/domain/entry.dart';
 import 'package:voting_app/src/features/entries/presentation/entries_screen.dart';
 import 'package:voting_app/src/features/entries/presentation/entry_screen/entry_screen.dart';
@@ -13,6 +15,7 @@ import 'package:voting_app/src/features/jobs/domain/job.dart';
 import 'package:voting_app/src/features/jobs/presentation/edit_job_screen/edit_job_screen.dart';
 import 'package:voting_app/src/features/jobs/presentation/job_entries_screen/job_entries_screen.dart';
 import 'package:voting_app/src/features/jobs/presentation/jobs_screen/jobs_screen.dart';
+import 'package:voting_app/src/features/joinvote/example_polls.dart';
 import 'package:voting_app/src/features/onboarding/data/onboarding_repository.dart';
 import 'package:voting_app/src/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:voting_app/src/routing/app_startup.dart';
@@ -49,6 +52,8 @@ enum AppRoute {
   elections,
   info,
   profile,
+  elec,
+  joinvote
 }
 
 @riverpod
@@ -230,8 +235,36 @@ GoRouter goRouter(GoRouterRef ref) {
                 path: '/elections',
                 name: AppRoute.elections.name,
                 pageBuilder: (context, state) => const NoTransitionPage(
-                  child: JobsScreen(),
+                  child: ElecsScreen(),
                 ),
+                routes: [
+                      GoRoute(
+                    path: ':id',
+                    name: AppRoute.elec.name,
+                    pageBuilder: (context, state) {
+                      final id = state.pathParameters['id']!;
+                      return MaterialPage(
+                        child: ElecEntriesScreen(jobId: id),
+                      );
+                    },
+                    routes: [
+                     
+                      GoRoute(
+                        path: 'joinelec/:eid',
+                        name: AppRoute.joinvote.name,
+                        pageBuilder: (context, state) {
+                          final elecId = state.pathParameters['id']!;
+                          final entryId = state.pathParameters['eid']!;
+                          final entry = state.extra as Entry?;
+                          return MaterialPage(
+                            child: PollScreen()
+                          );
+                        },
+                      ),
+                    
+                    ],
+                  ),
+                ],
               ),
             ],
           ),

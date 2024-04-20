@@ -26,7 +26,8 @@ class Strings {
   static const String info = 'Info & FaQ';
 
   // Vote page
-  static const String elections = 'Election Rooms';
+  static const String elections = 'Election Room';
+  static const String myelec = 'My Elections';
 
   // Account page
   static const String account = 'Account';

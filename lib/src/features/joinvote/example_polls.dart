@@ -2,14 +2,14 @@ import 'package:voting_app/src/features/joinvote/polls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polls/flutter_polls.dart';
 
-class ExamplePolls extends StatefulWidget {
-  const ExamplePolls({Key? key}) : super(key: key);
+class PollScreen extends StatefulWidget {
+  const PollScreen({Key? key}) : super(key: key);
 
   @override
-  State<ExamplePolls> createState() => _ExamplePollsState();
+  State<PollScreen> createState() => _PollScreenState();
 }
 
-class _ExamplePollsState extends State<ExamplePolls> {
+class _PollScreenState extends State<PollScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
