@@ -15,9 +15,65 @@ class OnboardingScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(onboardingControllerProvider);
     return Scaffold(
+      backgroundColor: Colors.indigo[100],
+      appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[Colors.indigo, Colors.blue],
+            ),
+          ),
+        ),
+        elevation: 0.0,
+        title: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'ELECT',
+                style: TextStyle(
+                  color: Colors.pink[300],
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              TextSpan(
+                text: 'CHAIN',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          IconButton(
+            color: Colors.white,
+            icon: Icon(Icons.how_to_vote_rounded),
+            onPressed: () {},
+          ),
+          Container(
+            decoration: BoxDecoration(shape: BoxShape.circle),
+            child: IconButton(
+              color: Colors.white,
+              icon: Icon(Icons.info_outline_rounded),
+              onPressed: () {
+                showAboutDialog(
+                  context: context,
+                  applicationVersion: '^1.0.0',
+                  applicationName: 'ElectChain',
+                  applicationLegalese: 'Brave Tech Solutions',
+                );
+              },
+            ),
+          ),
+        ],
+      ),
       body: ResponsiveCenter(
         maxContentWidth: 450,
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -28,27 +84,30 @@ class OnboardingScreen extends ConsumerWidget {
               textAlign: TextAlign.center,
             ),
             gapH16,
-           Image.asset(
-            'assets/voting-box.png',
-            width: 200,
-            height: 200,
-            semanticLabel: 'Voting box',
+            Image.asset(
+              'assets/voting-box.png',
+              width: 200,
+              height: 200,
+              semanticLabel: 'Voting box',
             ),
             gapH16,
-            PrimaryButton(
-              text: 'Get Started'.hardcoded,
-              isLoading: state.isLoading,
-              onPressed: state.isLoading
-                  ? null
-                  : () async {
-                      await ref
-                          .read(onboardingControllerProvider.notifier)
-                          .completeOnboarding();
-                      if (context.mounted) {
-                        // go to sign in page after completing onboarding
-                        context.goNamed(AppRoute.signIn.name);
-                      }
-                    },
+            Container(
+              width: 150, // specify your desired width here
+              child: PrimaryButton(
+                text: 'Get Started'.hardcoded,
+                isLoading: state.isLoading,
+                onPressed: state.isLoading
+                    ? null
+                    : () async {
+                        await ref
+                            .read(onboardingControllerProvider.notifier)
+                            .completeOnboarding();
+                        if (context.mounted) {
+                          // go to sign in page after completing onboarding
+                          context.goNamed(AppRoute.signIn.name);
+                        }
+                      },
+              ),
             ),
           ],
         ),

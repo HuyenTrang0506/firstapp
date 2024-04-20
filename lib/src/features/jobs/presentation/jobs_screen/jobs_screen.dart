@@ -26,7 +26,7 @@ class JobsScreen extends StatelessWidget {
       // ),
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -39,8 +39,8 @@ class JobsScreen extends StatelessWidget {
         actions: [
           IconButton(
             color: Colors.white,
-            icon: Icon(Icons.how_to_vote_rounded),
-            onPressed: () {},
+            icon: const Icon(Icons.add, color: Colors.white),
+            onPressed: () => context.goNamed(AppRoute.addJob.name),
           ),
           Container(
             decoration: BoxDecoration(shape: BoxShape.circle),

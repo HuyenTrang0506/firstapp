@@ -8,6 +8,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:voting_app/firebase_options.dart';
 import 'package:voting_app/src/app.dart';
 import 'package:voting_app/src/localization/string_hardcoded.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,16 @@ Future<void> main() async {
   // * Initialize Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseFirestore.instance.settings = const Settings(persistenceEnabled: false);
+  FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    if (user != null) {
+      // User is signed in
+      print('User is signed in. UID: ${user.uid}');
+      // Handle the ID token change here if needed
+    } else {
+      // User is signed out
+      print('User is signed out');
+    }
+  });
   // * Entry point of the app
   runApp(const ProviderScope(
     child: MyApp(),

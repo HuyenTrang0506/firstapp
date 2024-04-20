@@ -65,14 +65,50 @@ class _EditJobPageState extends ConsumerState<EditJobScreen> {
     );
     final state = ref.watch(editJobScreenControllerProvider);
     return Scaffold(
+      // appBar: AppBar(
+      //   title: Text(widget.job == null ? 'New Job' : 'Edit Job'),
+      //   actions: <Widget>[
+      //     TextButton(
+      //       onPressed: state.isLoading ? null : _submit,
+      //       child: const Text(
+      //         'Save',
+      //         style: TextStyle(fontSize: 18, color: Colors.white),
+      //       ),
+      //     ),
+      //   ],
+      // ),
       appBar: AppBar(
-        title: Text(widget.job == null ? 'New Job' : 'Edit Job'),
-        actions: <Widget>[
-          TextButton(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[Colors.indigo, Colors.blue],
+            ),
+          ),
+        ),
+        elevation: 0.0,
+ title: Text(widget.job == null ? 'New Job' : 'Edit Job'),       
+  actions: [
+          TextButton(            
             onPressed: state.isLoading ? null : _submit,
             child: const Text(
               'Save',
               style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(shape: BoxShape.circle),
+            child: IconButton(
+              color: Colors.white,
+              icon: Icon(Icons.info_outline_rounded),
+              onPressed: () {
+                showAboutDialog(
+                  context: context,
+                  applicationVersion: '^1.0.0',
+                  applicationName: 'ElectChain',                 
+                );
+              },
             ),
           ),
         ],

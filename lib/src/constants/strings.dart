@@ -22,6 +22,10 @@ class Strings {
   // Jobs page
   static const String createElection = 'Create Election';
 
+
+  // Jobs page
+  static const String info = 'Info & FaQ';
+
   // Vote page
   static const String elections = 'My Elections';
 
