@@ -65,7 +65,6 @@ class _ElectChainScreenState extends State<ElectChainScreen> {
                   context: context,
                   applicationVersion: '^1.0.0',
                   applicationName: 'ElectChain',
-                  applicationLegalese: 'Brave Tech Solutions',
                 );
               },
             ),
@@ -217,7 +216,6 @@ class HomeScreen extends StatelessWidget {
                   action: "FAQ",
                   description: "Create a new poll",
                   image: Icons.description,
-                  
                 ),
               ],
             ),

@@ -42,51 +42,54 @@ class InfoScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            // Center the image vertically
-            child: Image.asset(
-              'assets/voting.png',
-              width: 200, // Increase the width
-              height: 200, // Increase the height
-              semanticLabel: 'Voting box',
+      body: SingleChildScrollView(
+        // Add this
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              // Center the image vertically
+              child: Image.asset(
+                'assets/voting.png',
+                width: 200, // Increase the width
+                height: 200, // Increase the height
+                semanticLabel: 'Voting box',
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                StepItem(
-                  stepNumber: 1,
-                  stepTitle: 'Step 1: Add New Election',
-                  stepDescription:
-                      'Fill in the details of the new election, such as its name, start date, end date, and any additional information.',
-                ),
-                StepItem(
-                  stepNumber: 2,
-                  stepTitle: 'Step 2: Set the Time and Information',
-                  stepDescription:
-                      'Set the start and end time for the election, and provide any additional information or instructions.',
-                ),
-                StepItem(
-                  stepNumber: 3,
-                  stepTitle: 'Step 3: Change Election Options',
-                  stepDescription:
-                      'Modify the voting options available to voters, such as candidate names or referendum choices.',
-                ),
-                StepItem(
-                  stepNumber: 4,
-                  stepTitle: 'Step 4: Review and Publish',
-                  stepDescription:
-                      'Review all details of the election, make any necessary changes, and publish the election for voters to participate.',
-                ),
-              ],
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  StepItem(
+                    stepNumber: 1,
+                    stepTitle: 'Step 1: Add New Election',
+                    stepDescription:
+                        'Fill in the details of the new election, such as its name, start date, end date, and any additional information.',
+                  ),
+                  StepItem(
+                    stepNumber: 2,
+                    stepTitle: 'Step 2: Set the Time and Information',
+                    stepDescription:
+                        'Set the start and end time for the election, and provide any additional information or instructions.',
+                  ),
+                  StepItem(
+                    stepNumber: 3,
+                    stepTitle: 'Step 3: Change Election Options',
+                    stepDescription:
+                        'Modify the voting options available to voters, such as candidate names or referendum choices.',
+                  ),
+                  StepItem(
+                    stepNumber: 4,
+                    stepTitle: 'Step 4: Review and Publish',
+                    stepDescription:
+                        'Review all details of the election, make any necessary changes, and publish the election for voters to participate.',
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
