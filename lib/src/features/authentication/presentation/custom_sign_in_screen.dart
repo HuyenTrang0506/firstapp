@@ -14,7 +14,41 @@ class CustomSignInScreen extends ConsumerWidget {
     final authProviders = ref.watch(authProvidersProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign in'),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[Colors.indigo, Colors.blue],
+            ),
+          ),
+        ),
+        elevation: 0.0,
+        title: const Text("Sign In"),
+        actions: [
+          IconButton(
+            color: Colors.white,
+            icon: Icon(Icons.how_to_vote_rounded),
+            onPressed: () {
+              // Add functionality for the IconButton
+            },
+          ),
+          Container(
+            decoration: BoxDecoration(shape: BoxShape.circle),
+            child: IconButton(
+              color: Colors.white,
+              icon: Icon(Icons.info_outline_rounded),
+              onPressed: () {
+                // Show an About dialog when IconButton is pressed
+                showAboutDialog(
+                  context: context,
+                  applicationVersion: '^1.0.0',
+                  applicationName: 'ElectChain',
+                );
+              },
+            ),
+          ),
+        ],
       ),
       body: SignInScreen(
         providers: authProviders,

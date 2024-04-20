@@ -27,7 +27,8 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _homeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'home');
 final _jobsNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'jobs');
 final _entriesNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'entries');
-final _electionsNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'elections');
+final _electionsNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'elections');
 final _infoNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'info');
 final _accountNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'account');
 // final _mngVotesNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Manage Votes');
@@ -130,13 +131,13 @@ GoRouter goRouter(GoRouterRef ref) {
           child: ScaffoldWithNestedNavigation(navigationShell: navigationShell),
         ),
         branches: [
-           StatefulShellBranch(
+          StatefulShellBranch(
             navigatorKey: _homeNavigatorKey,
             routes: [
               GoRoute(
                 path: '/home',
                 name: AppRoute.home.name,
-                pageBuilder: (context, state) =>  NoTransitionPage(
+                pageBuilder: (context, state) => NoTransitionPage(
                   child: ElectChainScreen(),
                 ),
               ),
@@ -237,10 +238,10 @@ GoRouter goRouter(GoRouterRef ref) {
             navigatorKey: _electionsNavigatorKey,
             routes: [
               GoRoute(
-                path: '/myElection',
+                path: '/elections',
                 name: AppRoute.elections.name,
-                pageBuilder: (context, state) =>  const NoTransitionPage(
-                  child: EntriesScreen(),
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: JobsScreen(),
                 ),
               ),
             ],
@@ -251,7 +252,7 @@ GoRouter goRouter(GoRouterRef ref) {
               GoRoute(
                 path: '/info',
                 name: AppRoute.info.name,
-                pageBuilder: (context, state) =>   NoTransitionPage(
+                pageBuilder: (context, state) => NoTransitionPage(
                   child: InfoScreen(),
                 ),
               ),

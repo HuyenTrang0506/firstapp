@@ -35,7 +35,7 @@ class JobsScreen extends StatelessWidget {
           ),
         ),
         elevation: 0.0,
-        title: const Text(Strings.createElection),
+        title: const Text(Strings.elections),
         actions: [
           IconButton(
             color: Colors.white,
