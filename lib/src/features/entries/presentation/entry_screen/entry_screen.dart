@@ -29,7 +29,7 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
   late DateTime _endDate;
   late TimeOfDay _endTime;
   late String _comment;
-  late List<String> _options;
+
   DateTime get start => DateTime(_startDate.year, _startDate.month,
       _startDate.day, _startTime.hour, _startTime.minute);
   DateTime get end => DateTime(_endDate.year, _endDate.month, _endDate.day,
@@ -47,7 +47,7 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
     _endTime = TimeOfDay.fromDateTime(end);
 
     _comment = widget.entry?.comment ?? '';
-    // _options = widget.entry?.options ?? ['', '', '', ''];
+    
   }
 
   Future<void> _setEntryAndDismiss() async {
@@ -57,8 +57,7 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
               jobId: widget.jobId,
               start: start,
               end: end,
-              comment: _comment,
-              options: _options,
+              comment: _comment,              
             );
     if (success && mounted) {
       context.pop();
@@ -123,7 +122,6 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
               _buildStartDate(),
               _buildEndDate(),
               gapH8,
-              _buildOptions(),
             ],
           ),
         ),

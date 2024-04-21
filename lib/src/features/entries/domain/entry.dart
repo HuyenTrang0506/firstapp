@@ -10,14 +10,12 @@ class Entry extends Equatable {
     required this.start,
     required this.end,
     required this.comment,
-  
   });
   final EntryID id;
   final JobID jobId;
   final DateTime start;
   final DateTime end;
   final String comment;
-  
 
   @override
   List<Object> get props => [id, jobId, start, end, comment];
@@ -27,8 +25,7 @@ class Entry extends Equatable {
 
   double get durationInHours =>
       end.difference(start).inMinutes.toDouble() / 60.0;
-
-  String get state {
+String get state {
     final currentTime = DateTime.now();
     final isExpired = currentTime.isAfter(end);
     final isInProgress =
@@ -53,7 +50,6 @@ class Entry extends Equatable {
       start: DateTime.fromMillisecondsSinceEpoch(startMilliseconds),
       end: DateTime.fromMillisecondsSinceEpoch(endMilliseconds),
       comment: value['comment'] as String? ?? '',
-    
     );
   }
 
@@ -63,7 +59,6 @@ class Entry extends Equatable {
       'start': start.millisecondsSinceEpoch,
       'end': end.millisecondsSinceEpoch,
       'comment': comment,
-
     };
   }
 }
