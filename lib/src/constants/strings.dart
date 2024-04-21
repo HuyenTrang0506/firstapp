@@ -20,13 +20,13 @@ class Strings {
   static const String homePage = 'Home Page';
 
   // Jobs page
-  static const String createElection = 'Create Election';
+  static const String createElection = 'Create Space';
 
   // Jobs page
   static const String info = 'Info & FaQ';
 
   // Vote page
-  static const String elections = 'Election Room';
+  static const String elections = 'Election Spaces';
   static const String myelec = 'My Elections';
 
   // Account page

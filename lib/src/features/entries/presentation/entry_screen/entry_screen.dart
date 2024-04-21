@@ -122,6 +122,7 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
               _buildStartDate(),
               _buildEndDate(),
               gapH8,
+              _buildOptions(),
             ],
           ),
         ),

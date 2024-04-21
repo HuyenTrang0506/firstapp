@@ -1,5 +1,6 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+
 class Avatar extends StatelessWidget {
   const Avatar({
     Key? key,
@@ -31,7 +32,7 @@ class Avatar extends StatelessWidget {
               child: CircleAvatar(
                 radius: radius,
                 backgroundColor: Colors.black12,
-                backgroundImage: NetworkImage(snapshot.data!),
+                backgroundImage: const AssetImage('assets/voting-box.png'),
               ),
             ),
           );

@@ -90,12 +90,12 @@ flutter:
     - assets/time-tracking.svg
     - assets/voting-box.png
     - assets/voting.png
+    - assets/profile.png
     - assets/icons/icon.png
     - assets/icons/bronze.PNG
     - assets/icons/gold.PNG
     - assets/icons/logo.png
     - assets/icons/silver.PNG
-    
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
